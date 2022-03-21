@@ -1,6 +1,6 @@
 name: square_bishop
 description: A bridge package between Squares and Bishop, simplifying common uses.
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/alexobviously/squares
 
 environment:

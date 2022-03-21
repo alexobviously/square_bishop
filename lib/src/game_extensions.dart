@@ -10,7 +10,7 @@ extension GameExtensions on bp.Game {
   }
 
   /// Builds a Squares BoardState from the current state of the game.
-  sq.BoardState get boardState {
+  sq.BoardState boardState(int? orientation) {
     sq.BoardSize _size = squaresSize;
     return sq.BoardState(
       board: boardSymbols(),
@@ -18,6 +18,7 @@ extension GameExtensions on bp.Game {
       lastTo: info.lastTo != null ? _size.squareNumber(info.lastTo!) : null,
       checkSquare: info.checkSq != null ? _size.squareNumber(info.checkSq!) : null,
       player: turn,
+      orientation: orientation,
     );
   }
 
@@ -26,7 +27,7 @@ extension GameExtensions on bp.Game {
     return SquaresState(
       state: playState,
       size: size.toSquares(),
-      board: boardState,
+      board: boardState(player),
       moves: squaresMoves(player),
       history: squaresHistory,
       hands: handSymbols(),
