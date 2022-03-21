@@ -1,0 +1,1 @@
+See the [simple example](https://github.com/alexobviously/squares/tree/dev/example/simple) in the Squares package.
