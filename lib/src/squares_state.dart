@@ -3,7 +3,10 @@ import 'package:squares/squares.dart';
 
 /// A state representation containing the common values that are needed to manage a Squares `BoardController`.
 class SquaresState extends Equatable {
-  /// The current state of play. Can be idle, playing or finished.
+  /// The player this state is from the perspective of.
+  final int player;
+
+  /// The current state of play. Can be observing, ourTurn, theirTurn or finished.
   final PlayState state;
 
   /// A representation of the board dimensions.
@@ -26,9 +29,12 @@ class SquaresState extends Equatable {
   final List<Move> history;
 
   /// Can [player] currently move?
-  bool canMove(int player) => state == PlayState.playing && board.player == player;
+  bool canMove(int player) => player == player
+      ? state == PlayState.ourTurn
+      : state == PlayState.theirTurn;
 
   SquaresState({
+    required this.player,
     required this.state,
     required this.size,
     required this.board,
@@ -37,11 +43,17 @@ class SquaresState extends Equatable {
     this.thinking = false,
     this.history = const [],
   });
-  factory SquaresState.initial() =>
-      SquaresState(state: PlayState.idle, size: BoardSize.standard(), board: BoardState.empty(), moves: []);
+  factory SquaresState.initial(int player) => SquaresState(
+        player: player,
+        state: PlayState.observing,
+        size: BoardSize.standard,
+        board: BoardState.empty(),
+        moves: [],
+      );
 
   /// Creates a copy of the state with the relevant values modified.
   SquaresState copyWith({
+    int? player,
     PlayState? state,
     BoardSize? size,
     BoardState? board,
@@ -52,6 +64,7 @@ class SquaresState extends Equatable {
     List<Move>? history,
   }) {
     return SquaresState(
+      player: player ?? this.player,
       state: state ?? this.state,
       size: size ?? this.size,
       board: board ?? this.board,
@@ -69,7 +82,7 @@ class SquaresState extends Equatable {
   bool get stringify => true;
 }
 
-enum PlayState {
+enum GameState {
   idle,
   playing,
   finished,

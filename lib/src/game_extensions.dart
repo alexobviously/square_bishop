@@ -4,28 +4,42 @@ import 'package:square_bishop/square_bishop.dart';
 
 extension GameExtensions on bp.Game {
   /// Gets the current `PlayState`.
-  PlayState get playState {
-    if (gameOver) return PlayState.finished;
-    return PlayState.playing;
+  GameState get gameState {
+    if (gameOver) return GameState.finished;
+    return GameState.playing;
   }
 
   /// Builds a Squares BoardState from the current state of the game.
   sq.BoardState boardState(int? orientation) {
-    sq.BoardSize _size = squaresSize;
+    sq.BoardSize sqSize = squaresSize;
     return sq.BoardState(
       board: boardSymbols(),
-      lastFrom: info.lastFrom != null ? _size.squareNumber(info.lastFrom!) : null,
-      lastTo: info.lastTo != null ? _size.squareNumber(info.lastTo!) : null,
-      checkSquare: info.checkSq != null ? _size.squareNumber(info.checkSq!) : null,
+      lastFrom:
+          info.lastFrom != null ? sqSize.squareNumber(info.lastFrom!) : null,
+      lastTo: info.lastTo != null ? sqSize.squareNumber(info.lastTo!) : null,
+      checkSquare:
+          info.checkSq != null ? sqSize.squareNumber(info.checkSq!) : null,
       player: turn,
       orientation: orientation,
     );
   }
 
+  /// Gets the Squares PlayState for this game.
+  sq.PlayState playState(int player) {
+    if (gameState == GameState.finished) return sq.PlayState.finished;
+    if (gameState == GameState.idle ||
+        ![sq.Squares.white, sq.Squares.black].contains(player)) {
+      return sq.PlayState.observing;
+    }
+    if (turn == player) return sq.PlayState.ourTurn;
+    return sq.PlayState.theirTurn;
+  }
+
   /// Builds a SquaresState from the current state of the game, from the perspective of [player].
   SquaresState squaresState(int player) {
     return SquaresState(
-      state: playState,
+      player: player,
+      state: playState(player),
       size: size.toSquares(),
       board: boardState(player),
       moves: squaresMoves(player),
@@ -38,14 +52,19 @@ extension GameExtensions on bp.Game {
 
   /// Gets all the available moves (in Bishop format) for [player].
   /// If it's [player]'s turn, this will generate legal moves, and if not it will generate premoves.
-  List<bp.Move> movesForPlayer(int player) => turn == player ? generateLegalMoves() : generatePremoves();
+  List<bp.Move> movesForPlayer(int player) =>
+      turn == player ? generateLegalMoves() : generatePremoves();
 
   /// Gets all the available moves (in Squares format) for [player].
   /// /// If it's [player]'s turn, this will generate legal moves, and if not it will generate premoves.
-  List<sq.Move> squaresMoves(int player) => movesForPlayer(player).map((e) => squaresMove(e)).toList();
+  List<sq.Move> squaresMoves(int player) =>
+      movesForPlayer(player).map((e) => squaresMove(e)).toList();
 
   /// Returns the move history in Squares move format.
-  List<sq.Move> get squaresHistory => history.where((e) => e.move != null).map((e) => squaresMove(e.move!)).toList();
+  List<sq.Move> get squaresHistory => history
+      .where((e) => e.move != null)
+      .map((e) => squaresMove(e.move!))
+      .toList();
 
   /// Converts a Bishop move to a Squares move.
   sq.Move squaresMove(bp.Move move) {
