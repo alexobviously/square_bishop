@@ -1,3 +1,6 @@
+### 0.2.0
+- use squares 1.0.0
+
 ### 0.1.4
 - Intermediate compatibility version, please update to 0.2.0
 
