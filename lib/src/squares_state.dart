@@ -78,7 +78,10 @@ class SquaresState extends Equatable {
   /// Returns a copy of the state, with [board.orientation] flipped.
   SquaresState flipped() => copyWith(board: board.flipped());
 
+  @override
   List<Object> get props => [state, size, board, moves, hands, thinking];
+
+  @override
   bool get stringify => true;
 }
 
