@@ -19,7 +19,7 @@ extension GameExtensions on bp.Game {
       lastTo: info.lastTo != null ? sqSize.squareNumber(info.lastTo!) : null,
       checkSquare:
           info.checkSq != null ? sqSize.squareNumber(info.checkSq!) : null,
-      player: turn,
+      turn: turn,
       orientation: orientation,
     );
   }
