@@ -1,3 +1,7 @@
+### 0.2.3
+- Bishop 0.5.0
+- `buildSquaresState` utility function.
+
 ### 0.2.2
 - Squares 1.0.2
 
