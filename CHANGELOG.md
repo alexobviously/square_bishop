@@ -1,3 +1,6 @@
+### 0.2.4
+- Update dependencies (Bishop 0.6.0)
+
 ### 0.2.3
 - Bishop 0.5.0
 - `buildSquaresState` utility function.
