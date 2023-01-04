@@ -1,3 +1,7 @@
+### 0.2.7
+- `SquaresState.initial` takes an optional size.
+- Update dependencies (Squares 1.1.1)
+
 ### 0.2.6
 - Update dependencies (Bishop 0.6.2, Squares 1.1.0)
 

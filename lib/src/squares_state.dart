@@ -43,10 +43,14 @@ class SquaresState extends Equatable {
     this.thinking = false,
     this.history = const [],
   });
-  factory SquaresState.initial(int player) => SquaresState(
+  factory SquaresState.initial(
+    int player, {
+    BoardSize size = BoardSize.standard,
+  }) =>
+      SquaresState(
         player: player,
         state: PlayState.observing,
-        size: BoardSize.standard,
+        size: size,
         board: BoardState.empty(),
         moves: [],
       );
