@@ -22,6 +22,9 @@ class SquaresState extends Equatable {
   /// The pieces in each player's hand, such as in variants like Crazyhouse.
   final List<List<String>> hands;
 
+  /// The pieces in each player's gate, such as in variants like Musketeer.
+  final List<List<String>> gates;
+
   /// Is there thinking happening? Set this yourself.
   final bool thinking;
 
@@ -40,6 +43,7 @@ class SquaresState extends Equatable {
     required this.board,
     required this.moves,
     this.hands = const [[], []],
+    this.gates = const [[], []],
     this.thinking = false,
     this.history = const [],
   });
@@ -63,6 +67,7 @@ class SquaresState extends Equatable {
     BoardState? board,
     List<Move>? moves,
     List<List<String>>? hands,
+    List<List<String>>? gates,
     bool? thinking,
     int? orientation,
     List<Move>? history,
@@ -74,6 +79,7 @@ class SquaresState extends Equatable {
       board: board ?? this.board,
       moves: moves ?? this.moves,
       hands: hands ?? this.hands,
+      gates: gates ?? this.gates,
       thinking: thinking ?? this.thinking,
       history: history ?? this.history,
     );
@@ -83,7 +89,15 @@ class SquaresState extends Equatable {
   SquaresState flipped() => copyWith(board: board.flipped());
 
   @override
-  List<Object> get props => [state, size, board, moves, hands, thinking];
+  List<Object> get props => [
+        state,
+        size,
+        board,
+        moves,
+        hands,
+        gates,
+        thinking,
+      ];
 
   @override
   bool get stringify => true;

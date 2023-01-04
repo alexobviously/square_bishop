@@ -1,3 +1,7 @@
+### 0.2.8
+- Added `SquaresState.gates` field.
+- Update dependencies (Bishop 0.6.4)
+
 ### 0.2.7
 - `SquaresState.initial` takes an optional size.
 - Update dependencies (Squares 1.1.1)
