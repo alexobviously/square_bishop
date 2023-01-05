@@ -53,13 +53,17 @@ extension GameExtensions on bp.Game {
 
   /// Gets all the available moves (in Bishop format) for [player].
   /// If it's [player]'s turn, this will generate legal moves, and if not it will generate premoves.
-  List<bp.Move> movesForPlayer(int player) =>
-      turn == player ? generateLegalMoves() : generatePremoves();
+  List<bp.Move> movesForPlayer(int player, {bool allowPremoves = true}) =>
+      turn == player
+          ? generateLegalMoves()
+          : (allowPremoves ? generatePremoves() : []);
 
   /// Gets all the available moves (in Squares format) for [player].
   /// /// If it's [player]'s turn, this will generate legal moves, and if not it will generate premoves.
-  List<sq.Move> squaresMoves(int player) =>
-      movesForPlayer(player).map((e) => squaresMove(e)).toList();
+  List<sq.Move> squaresMoves(int player, {bool allowPremoves = true}) =>
+      movesForPlayer(player, allowPremoves: allowPremoves)
+          .map((e) => squaresMove(e))
+          .toList();
 
   /// Returns the move history in Squares move format.
   List<sq.Move> get squaresHistory => history
