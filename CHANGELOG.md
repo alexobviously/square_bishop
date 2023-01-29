@@ -1,5 +1,6 @@
 ### 0.2.9
 - Added `allowPremoves` parameter to move generation methods.
+- Update dependencies (Bishop 1.0.0)
 
 ### 0.2.8
 - Added `SquaresState.gates` field.

@@ -45,7 +45,7 @@ extension GameExtensions on bp.Game {
       moves: squaresMoves(player),
       history: squaresHistory,
       hands: handSymbols,
-      gates: gateSymbols(),
+      gates: gateSymbols,
     );
   }
 
