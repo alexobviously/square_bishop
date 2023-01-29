@@ -24,7 +24,7 @@ SquaresState? buildSquaresState({
     variant: variant,
     fen: fen,
     fenBuilder: fenBuilder,
-    seed: seed ?? bp.defaultSeed,
+    seed: seed ?? bp.Bishop.defaultSeed,
   );
   int movesMade = game.makeMultipleMoves(
     moves,
