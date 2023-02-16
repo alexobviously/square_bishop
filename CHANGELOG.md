@@ -1,5 +1,9 @@
+### 0.2.11
+- Support `Game.zobristSeed` and `Game.startPosSeed`.
+- Update dependencies (Bishop 1.2.2)
+
 ### 0.2.10
-- Update dependenceis (Bishop 1.2.0, Squares 1.1.3)
+- Update dependencies (Bishop 1.2.0, Squares 1.1.3)
 
 ### 0.2.9
 - Added `allowPremoves` parameter to move generation methods.

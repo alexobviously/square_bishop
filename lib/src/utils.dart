@@ -17,14 +17,16 @@ SquaresState? buildSquaresState({
   int player = Squares.white,
   List<String> moves = const [],
   InvalidMoveBehaviour invalidMoveBehaviour = InvalidMoveBehaviour.returnNull,
-  int? seed,
+  int? zobristSeed,
+  int? startPosSeed,
 }) {
   variant ??= bp.Variant.standard();
   bp.Game game = bp.Game(
     variant: variant,
     fen: fen,
     fenBuilder: fenBuilder,
-    seed: seed ?? bp.Bishop.defaultSeed,
+    zobristSeed: zobristSeed ?? bp.Bishop.defaultSeed,
+    startPosSeed: startPosSeed,
   );
   int movesMade = game.makeMultipleMoves(
     moves,
