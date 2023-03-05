@@ -30,7 +30,7 @@ SquaresState? buildSquaresState({
   );
   int movesMade = game.makeMultipleMoves(
     moves,
-    invalidMoveBehaviour == InvalidMoveBehaviour.undoAll,
+    undoOnError: invalidMoveBehaviour == InvalidMoveBehaviour.undoAll,
   );
   if (movesMade != moves.length) {
     if (invalidMoveBehaviour == InvalidMoveBehaviour.returnNull) {

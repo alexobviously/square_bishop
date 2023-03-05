@@ -1,3 +1,6 @@
+## 0.2.12
+- Update dependencies (Bishop 1.2.3)
+
 ### 0.2.11
 - Support `Game.zobristSeed` and `Game.startPosSeed`.
 - Update dependencies (Bishop 1.2.2)
