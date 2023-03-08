@@ -1,6 +1,6 @@
 name: square_bishop
 description: A bridge package between Squares and Bishop, simplifying common uses.
-version: 0.2.12
+version: 0.2.13
 homepage: https://github.com/alexobviously/squares
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  bishop: ^1.2.3
+  bishop: ^1.2.5
   equatable: ^2.0.3
   squares: ^1.1.3
 

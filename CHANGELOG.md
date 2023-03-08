@@ -1,4 +1,7 @@
-## 0.2.12
+### 0.2.13
+- Update dependencies (Bishop 1.2.5)
+
+### 0.2.12
 - Update dependencies (Bishop 1.2.3)
 
 ### 0.2.11
