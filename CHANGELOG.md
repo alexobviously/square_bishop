@@ -1,3 +1,6 @@
+### 0.2.14
+- Update dependencies (Bishop 1.2.9, Squares 1.1.4)
+
 ### 0.2.13
 - Update dependencies (Bishop 1.2.5)
 
