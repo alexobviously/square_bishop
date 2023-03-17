@@ -1,3 +1,6 @@
+### 0.2.15
+- `Game.boardState()` will now fill `checkSquare` with `move.to` for won endings where there's no check.
+
 ### 0.2.14
 - Update dependencies (Bishop 1.2.9, Squares 1.1.4)
 

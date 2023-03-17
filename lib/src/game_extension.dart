@@ -12,13 +12,18 @@ extension GameExtensions on bp.Game {
   /// Builds a Squares BoardState from the current state of the game.
   sq.BoardState boardState(int? orientation) {
     sq.BoardSize sqSize = squaresSize;
+    int? checkSquare;
+    if (info.checkSq != null) {
+      checkSquare = sqSize.squareNumber(info.checkSq!);
+    } else if (won && info.lastFrom != null) {
+      checkSquare = sqSize.squareNumber(info.lastTo!);
+    }
     return sq.BoardState(
       board: boardSymbols(),
       lastFrom:
           info.lastFrom != null ? sqSize.squareNumber(info.lastFrom!) : null,
       lastTo: info.lastTo != null ? sqSize.squareNumber(info.lastTo!) : null,
-      checkSquare:
-          info.checkSq != null ? sqSize.squareNumber(info.checkSq!) : null,
+      checkSquare: checkSquare,
       turn: turn,
       orientation: orientation,
     );
