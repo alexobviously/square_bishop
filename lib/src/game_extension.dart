@@ -15,7 +15,7 @@ extension GameExtensions on bp.Game {
     int? checkSquare;
     if (info.checkSq != null) {
       checkSquare = sqSize.squareNumber(info.checkSq!);
-    } else if (won && info.lastFrom != null) {
+    } else if (won && info.lastTo != null) {
       checkSquare = sqSize.squareNumber(info.lastTo!);
     }
     return sq.BoardState(
